@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvfl.springboot.mapper.NovelMapper">
+    <insert id="insertNovel">
+                insert into novel (nname,uid,ntid,blurb)
+                values (#{nname}, #{uid},#{ntid}, #{blurb})
+    </insert>
+    <update id="updateNovel">
+                update novel set
+                    <if test="nname!=null and nname!=''">
+                        nname=#{nname},
+                    </if>
+                    <if test="uid!=null and uid!=''">
+                        uid=#{uid},
+                    </if>
+
+                    <if test="ntid!=null and ntid!=''">
+                        ntid=#{ntid},
+                    </if>
+                    <if test="blurb!=null and blurb!=''">
+                        blurb=#{blurb}
+                    </if>
+                    where nid=#{nid}
+    </update>
+    <select id="findAll" resultType="com.lvfl.springboot.entity.Novel">
+        select * from novel
+    </select>
+    <select id="selectNovel" resultType="com.lvfl.springboot.entity.Novel">
+        select * from novel where nname = #{nname}
+    </select>
+    <select id="pageSelect" resultType="com.lvfl.springboot.entity.Novel">
+        select nid,n.uid,n.ntid,nname,unickname,ntname,blurb
+        from novel n join user u join noveltype nt
+            on n.uid = u.uid and n.ntid = nt.ntid
+        <if test="nname!=null and nname!=''">
+            where nname like concat('%', #{nname}, '%')
+        </if>
+            limit #{pageNum},#{pageSize}
+    </select>
+    <select id="totalSelect" resultType="java.lang.Integer">
+        select count(nid) from novel where nname like concat('%', #{nname}, '%')
+    </select>
+    <!--    <select id="pageTotal"  parameterType="com.lvfl.springboot.entity.Novel" resultType="java.lang.Integer">-->
+    <!--        select count(uid) from Novel where uname like concat('%', #{uname}, '%')-->
+    <!--    </select>-->
+    <!--    <insert id="insert" parameterType="com.lvfl.springboot.entity.Novel">-->
+    <!--        insert into Novel (uname,upwd,unickname,uphone,uemail)-->
+    <!--        values (#{uname}, #{upwd},#{unickname}, #{uphone}, #{uemail})-->
+    <!--    </insert>-->
+    <!--    <delete id="deleteById" parameterType="com.lvfl.springboot.entity.Novel">-->
+    <!--        delete from Novel where uid= #{uid}-->
+    <!--    </delete>-->
+
+    <!--    <update id="update" parameterType="com.lvfl.springboot.entity.Novel">-->
+    <!--        update Novel set-->
+    <!--            <if test="uname!=null and uname!=''">-->
+    <!--                uname=#{uname},-->
+    <!--            </if>-->
+    <!--            <if test="upwd!=null and uname!=''">-->
+    <!--                upwd=#{upwd},-->
+    <!--            </if>-->
+    <!--            <if test="unickname!=null and uname!=''">-->
+    <!--                unickname=#{unickname},-->
+    <!--            </if>-->
+    <!--            <if test="uphone!=null and uname!=''">-->
+    <!--                uphone=#{uphone},-->
+    <!--            </if>-->
+    <!--            <if test="uemail!=null and uname!=''">-->
+    <!--                uemail=#{uemail}-->
+    <!--            </if>-->
+    <!--        <where>-->
+    <!--            uid=#{uid}-->
+    <!--        </where>-->
+    <!--    </update>-->
+
+</mapper>

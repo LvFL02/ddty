@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.menu-btn{
+    position:relative;
+    width: 50px;
+    height: 60px;
+    background: #B3C0D1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid #333333;
+    left: -20px;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+.menu-btn span{
+    position: absolute;
+    width: 30px;
+    height: 3px;
+    left: 15px;
+    background: #2a2730;
+    border-radius: 4px;
+    transition: 0.5s;
+}
+.menu-btn span:nth-child(1){
+    transform: translateY(-15px);
+    width: 20px;
+    left: 15px;
+}
+.menu-btn.active span:nth-child(1){
+    width: 35px;
+    transform: translateY(0px) rotate(45deg);
+    transition-delay: 0.15s;
+}
+.menu-btn span:nth-child(2){
+    transform: translateY(15px);
+    width: 25px;
+    left: 15px;
+}
+.menu-btn.active span:nth-child(2){
+    width: 35px;
+    transform: translateY(0px) rotate(315deg);
+    transition-delay: 0.15s;
+}
+.menu-btn.active span:nth-child(3){
+    transform: translateX(60px);
+}
+.a{
+    height: 1px;
+}
+
+.a >>> .el-pagination .el-pager li{
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.a >>> .el-pagination .el-pager li:hover{
+    background-color:#409EFF;
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.a >>>.el-pagination .btn-next {
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.a >>>.el-pagination .btn-next:hover {
+    background-color:#409EFF;
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.a >>>.el-pagination .btn-prev{
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.a >>>.el-pagination .btn-prev:hover {
+    background-color:#409EFF;
+    transition: all 0.5s ease-in-out;
+    color: #333333!important;
+}
+.dm3{
+    width: 0;
+    height: 0;
+    left: 35%;
+    position: absolute;
+    border-top: 13px solid transparent;
+    border-left: 13px solid #00897B;
+    border-bottom: 13px solid transparent;
+}
+.toggle{
+    position: absolute;
+    width: 30px;
+    height: 55px;
+    background: rgb(42, 39, 48);
+    cursor: pointer;
+    top: 45%;
+    padding: 8px;
+    border-radius: 15px;
+    left:45px;
+    z-index: 1;
+    border: 5px solid rgb(42, 39, 48);
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: center;
+    transition: all 0.15s ease-in-out;
+}
+.toggle span i{
+    position: absolute;
+    color: #eeeeee;
+    text-align: center;
+    top: 15px;
+    right: -5px;
+    font-size: 20px;
+    
+}
+.el-aside {
+    transition: all 0.15s ease-in-out;
+    overflow: hidden;
+    background-color: rgb(48, 65, 86)!important;
+    width: 64px!important;
+}
+
+.el-aside.active {
+    transition: all 0.15s ease-in-out;
+    width: 200px!important;
+}
+
+.el-menu {
+    transition: all 0.15s ease-in-out;
+
+}
+.el-menu .active{
+    background-color: #333333;
+    overflow: hidden;
+    transition: all 0.15s ease-in-out;
+}
+
+
+
+.toggle.active{
+    left: 182px;
+    transition: all 0.15s ease-in-out;
+}
+
+.el-table--border .el-table__cell:first-child .cell {
+    padding: 0;
+}
+.transitionRouter-enter-active,
+.transitionRouter-leave-active{
+    transition: all 0.4s;
+}
+.transitionRouter-enter,
+.transitionRouter-leave{
+    transition: all 0.4s;
+}
+

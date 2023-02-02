@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvfl.springboot.mapper.NovelChapterMapper">
+
+    <insert id="insertChapter"></insert>
+
+    <update id="updateChapter"></update>
+
+    <select id="chapterList" resultType="com.lvfl.springboot.entity.NovelChapter">
+        select c.cid,c.cname,c.nid,n.nname,n.blurb,c.path from chapter c join novel n on c.nid = n.nid where c.nid = #{nid}
+    </select>
+    <select id="findAll" resultType="com.lvfl.springboot.entity.NovelChapter">
+        select * from chapter
+    </select>
+    <select id="read" resultType="com.lvfl.springboot.entity.NovelChapter">
+        select cid,path from chapter where cid = #{cid}
+    </select>
+</mapper>

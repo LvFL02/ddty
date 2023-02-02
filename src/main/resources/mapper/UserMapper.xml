@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lvfl.springboot.mapper.UserMapper">
+    <select id="findAll" resultType="com.lvfl.springboot.entity.User">
+        select * from user
+    </select>
+
+    <select id="selectUser" resultType="com.lvfl.springboot.entity.User">
+        select * from user where uname = #{uname}
+    </select>
+    <select id="pageSelect" parameterType="com.lvfl.springboot.entity.User" resultType="com.lvfl.springboot.entity.User">
+        select * from user
+        <if test="uname!=null and uname!=''">
+            where uname like concat('%', #{uname}, '%')
+        </if>
+        limit #{pageNum},#{pageSize}
+    </select>
+    <select id="authorPage" resultType="com.lvfl.springboot.entity.User">
+        select * from user
+        <if test="uname!=null and uname!=''">
+            where name like concat('%', #{uname}, '%') and status = 1
+        </if>
+        limit #{pageNum},#{pageSize}
+    </select>
+    <select id="Key" resultType="com.lvfl.springboot.entity.Key">
+        select kname from key where kname = #{kname}
+    </select>
+    <!--    <select id="pageTotal"  parameterType="com.lvfl.springboot.entity.User" resultType="java.lang.Integer">-->
+<!--        select count(uid) from user where uname like concat('%', #{uname}, '%')-->
+<!--    </select>-->
+<!--    <insert id="insert" parameterType="com.lvfl.springboot.entity.User">-->
+<!--        insert into user (uname,upwd,unickname,uphone,uemail)-->
+<!--        values (#{uname}, #{upwd},#{unickname}, #{uphone}, #{uemail})-->
+<!--    </insert>-->
+<!--    <delete id="deleteById" parameterType="com.lvfl.springboot.entity.User">-->
+<!--        delete from user where uid= #{uid}-->
+<!--    </delete>-->
+
+<!--    <update id="update" parameterType="com.lvfl.springboot.entity.User">-->
+<!--        update user set-->
+<!--            <if test="uname!=null and uname!=''">-->
+<!--                uname=#{uname},-->
+<!--            </if>-->
+<!--            <if test="upwd!=null and uname!=''">-->
+<!--                upwd=#{upwd},-->
+<!--            </if>-->
+<!--            <if test="unickname!=null and uname!=''">-->
+<!--                unickname=#{unickname},-->
+<!--            </if>-->
+<!--            <if test="uphone!=null and uname!=''">-->
+<!--                uphone=#{uphone},-->
+<!--            </if>-->
+<!--            <if test="uemail!=null and uname!=''">-->
+<!--                uemail=#{uemail}-->
+<!--            </if>-->
+<!--        <where>-->
+<!--            uid=#{uid}-->
+<!--        </where>-->
+<!--    </update>-->
+
+</mapper>
